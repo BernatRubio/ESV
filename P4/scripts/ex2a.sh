@@ -1,10 +1,12 @@
 #!/bin/bash
 
 input_path="$HOME/Downloads/big_buck_bunny_1080p_h264.mov"
-output_path="../output/ex1a.mp4"
+output_path="../output/ex2a_trimmed.mp4"
+output_path2="../output/ex2a.mp4"
 
 if docker images alpine-ffmpeg -q < /dev/null | grep -q .; then
-    cd ../docker && ./dffmpeg.sh -i $input_path -ss 00:00:00 -t 00:01:00 -c:v copy -c:a copy $output_path
+    cd ../docker && ./dffmpeg.sh -i $input_path -ss 00:00:00 -t 00:01:00 -c:v copy -c:a copy $output_path && ./dffmpeg.sh -i $output_path -c:v libx264 -profile:v baseline -level:v 3.0 -c:a aac -strict -2 $output_path2
+
 else
-    cd ../docker && ./build.sh && ./dffmpeg.sh -i $input_path -ss 00:00:00 -t 00:01:00 -c:v copy -c:a copy $output_path
+    cd ../docker && ./build.sh && ./dffmpeg.sh -i $input_path -ss 00:00:00 -t 00:01:00 -c:v copy -c:a copy $output_path && ./dffmpeg.sh -i $output_path -c:v libx264 -profile:v baseline -level:v 3.0 -c:a aac -strict -2 $output_path2
 fi
