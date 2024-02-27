@@ -1,0 +1,3 @@
+[submodule "P4/cdn-up-and-running"]
+	path = P4/cdn-up-and-running
+	url = git@github.com:leandromoreira/cdn-up-and-running.git
