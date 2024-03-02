@@ -14,4 +14,4 @@ else
     ./dffmpeg.sh -i $output_path -c:v libx264 -profile:v baseline -level:v 3.0 -c:a aac -strict -2 -movflags frag_keyframe+empty_moov $output_path2
 fi
 
-rm ../output/ex2a_trimmed.mp4
+rm $output_path
